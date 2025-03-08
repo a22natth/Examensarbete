@@ -1,7 +1,7 @@
 const ctx = document.getElementById('myChart');
 
 // Fetches data from specified file (although might have to change when using XAMPP)
-fetch('data.json')
+fetch('../dataFolder/data.json')
 
 .then(function(response){
   if(response.ok == true){
@@ -17,13 +17,13 @@ fetch('data.json')
 function createChart(climateData){
   console.log(climateData.weatherdata.avgtemperatures.map(row => row.date));
   console.log(climateData.weatherdata.avgtemperatures.map(row => row.temp));
-  
+
   new Chart(ctx, {
     type: 'line',
     data: {
       labels: climateData.weatherdata.avgtemperatures.map(row => row.date),
       datasets: [{
-        label: 'Climate data',
+        label: 'Average temperature',
         data: climateData.weatherdata.avgtemperatures.map(row => row.temp),
         borderWidth: 1
       }]
