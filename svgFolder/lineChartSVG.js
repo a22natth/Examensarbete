@@ -7,11 +7,14 @@ var data = {
     ]
   };
   
-  // As options we currently only set a static size of 300x200 px. We can also omit this and use aspect ratio containers
-  // as you saw in the previous example
+// Customization of line chart
   var options = {
-    width: 300,
-    height: 200
+    width: 500,
+    height: 400,
+    // Don't draw the line chart points
+    showPoint: false,
+    // Disable line smoothing
+    lineSmooth: false,
   };
   
   // Create a new line chart object where as first parameter we pass in a selector
