@@ -19,6 +19,15 @@ fetchData().then(datapoints => {
     console.log(dates);
 });
 
+// Fetches just the temperature (does not display them yet)
+fetchData().then(datapoints => {
+  const temps = datapoints.weatherdata.avgtemperatures.map(
+      function(index){
+          return index.temp;
+      })
+  console.log(temps);
+});
+
 // Creates the linechart (yet to have the data from the JSON file though)
 function createChart(data){
 
