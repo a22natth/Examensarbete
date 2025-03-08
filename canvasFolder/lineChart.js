@@ -1,43 +1,30 @@
 const ctx = document.getElementById('myChart');
 
-// Function that fetches the data from JSON file
-async function fetchData(){
-    const url = 'data.json'; // Idk if i need to change the url later...
-    const response = await fetch(url);
+// Fetches data from specified file (although might have to change when using XAMPP)
+fetch('data.json')
 
-    const datapoints = await response.json();
-    //console.log(datapoints);
-    return datapoints;
-};
-
-// Fetches just the dates (does not display them)
-fetchData().then(datapoints => {
-    const dates = datapoints.weatherdata.avgtemperatures.map(
-        function(index){
-            return index.date;
-        })
-    console.log(dates);
+.then(function(response){
+  if(response.ok == true){
+    return response.json();
+  }
+})
+// If response is ok then a chart is created with the fetched data from the JSON file
+.then(function(climateData){
+  createChart(climateData)
 });
 
-// Fetches just the temperature (does not display them yet)
-fetchData().then(datapoints => {
-  const temps = datapoints.weatherdata.avgtemperatures.map(
-      function(index){
-          return index.temp;
-      })
-  console.log(temps);
-});
-
-// Creates the linechart (yet to have the data from the JSON file though)
-function createChart(data){
-
+// Creates the linechart with passed data
+function createChart(climateData){
+  console.log(climateData.weatherdata.avgtemperatures.map(row => row.date));
+  console.log(climateData.weatherdata.avgtemperatures.map(row => row.temp));
+  
   new Chart(ctx, {
     type: 'line',
     data: {
-      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+      labels: climateData.weatherdata.avgtemperatures.map(row => row.date),
       datasets: [{
-        label: '# of Votes',
-        data: [12, 19, 3, 5, 2, 3],
+        label: 'Climate data',
+        data: climateData.weatherdata.avgtemperatures.map(row => row.temp),
         borderWidth: 1
       }]
     },
@@ -51,3 +38,4 @@ function createChart(data){
     }
   });
 }
+
