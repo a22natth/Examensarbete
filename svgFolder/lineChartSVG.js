@@ -21,6 +21,9 @@
         showPoint: false,
         // Disables line smoothing
         lineSmooth: false,
+          axisY: {
+            offset: 60,
+          }
   };
   
   new Chartist.Line('.ct-chart', data, options);
