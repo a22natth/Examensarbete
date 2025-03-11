@@ -10,7 +10,6 @@ h1{
 
 #myChart{
     margin:auto; 
-    width: 800px;
-    height: 500px;
-    display: inline-flex;
+    width: 1200px;
+    height: 650px;
 }
