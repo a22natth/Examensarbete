@@ -8,9 +8,8 @@ h1{
     font-family: 'Courier New', Courier, monospace;
 }
 
-#myChart{
-    margin:auto; 
-    width: 800px;
-    height: 500px;
-    display: inline-flex;
+.ct-perfect-fourth>svg{
+    display:block;
+    position:relative;
+    margin: auto;
 }
