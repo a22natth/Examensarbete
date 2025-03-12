@@ -1,1 +1,16 @@
-INSERT INFO AB MODIFICATIONS, WHEN DATA WAS DOWNLOADED, CITE SMHI, WHAT DATES IN EACH RESPECTIVE DATASET FILE
+INFORMATION ABOUT THE USED DATA
+
+The data used for the project regarding climate data visualization has been taken from SMHI (u.å). It has been downloaded through 
+https://www.smhi.se/data/hitta-data-for-en-plats/ladda-ner-vaderobservationer/airtemperatureMean24h, and is under the license 
+Creative Commons 4.0 SE (SMHI, u-å). The dataset used covers the airtemperature mean for each day in the city of Helsingborg, Sweden.
+The dataset is divided into three smaller datasets, covering 730 (dataSmall.json), 1460(dataMedium.json) and 2920(dataLarge.json) datapoints.
+Since the downloaded file is in a csv-format, the following csv-to-json converter has been used: https://www.convertcsv.com/csv-to-json.htm. 
+The modifications performen on the csv-file surrounds a namechange of the original headings "Representativt dygn" and "Lufttemperatur".
+These are the only columns used when converting and displaying data in this study. Further modifications have not been made. 
+
+The json-file "dataSmall.json" contains 730 datapoints spanning from the dates 1984-01-01 to 1985-12-31.
+
+The json-file "dataMedium.json" contains 1460 datapoints spanning from the dates 1984-01-01 to 1987-12-31.
+
+The json-file "dataLarge.json" contains 2920 datapoints spanning from the dates 1984-01-01 to 1992-03-10.
+

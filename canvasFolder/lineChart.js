@@ -1,7 +1,7 @@
 const ctx = document.getElementById('myChart');
 
 // Fetches data from specified file (although might have to change when using XAMPP)
-fetch('../dataFolder/dataSmall.json')
+fetch('../dataFolder/dataLarge.json')
 
 .then(function(response){
   if(response.ok == true){
