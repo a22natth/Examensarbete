@@ -1,5 +1,6 @@
 body {
-    background-color: rgb(115, 158, 101);
+    background-color:  rgb(161, 194, 150);
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 h1 {
@@ -15,7 +16,7 @@ h1 {
 }
 
 .ct-perfect-fourth:before {
-    padding-bottom: 25%;
+    padding-bottom: 200px;
 }
 
 svg.ct-chart-bar, svg.ct-chart-line{
@@ -26,7 +27,12 @@ svg.ct-chart-bar, svg.ct-chart-line{
   justify-content: flex-end;
   text-align: right;
   transform-origin: 100% 0;
-  transform: translate(-100%) rotate(-90deg);
+  transform: translate(-100%) rotate(-45deg);
   white-space: nowrap;
+}
+
+.ct-series-a .ct-line {
+    stroke: red;
+    stroke-width: 1px;
 }
 
