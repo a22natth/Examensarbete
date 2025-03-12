@@ -16,8 +16,6 @@ fetch('../dataFolder/dataSmall.json')
     var options = {
         height: 650,
         width: 1200,
-        // Makes sure this value is always on the axis
-        referenceValue: 5,
         // Doesn't draw the line chart points
         showPoint: false,
         // Disables line smoothing
@@ -25,7 +23,19 @@ fetch('../dataFolder/dataSmall.json')
           axisY: {
             offset: 30,
             // Adjust scaleMinSpace to auto adjust values (decimals to integers only eg. on y-axis)
-            scaleMinSpace: 30,
+            scaleMinSpace: 40,
+        },
+        axisX: {
+            offset: 0,
+            labelInterpolationFnc: function(value, index) {
+                // For dataSmall.json set nth to 15
+                // For dataMedium.json set nth 29 
+                // For dataLarge.json set nth to 42
+                var nth = 15;
+                if(index % nth == 0){
+                    return value;
+                }
+            }
         },
     };
   new Chartist.Line('.ct-chart', data, options);
