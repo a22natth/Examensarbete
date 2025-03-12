@@ -1,7 +1,7 @@
 const ctx = document.getElementById('myChart');
 
 // Fetches data from specified file (although might have to change when using XAMPP)
-fetch('../dataFolder/dataLarge.json')
+fetch('../dataFolder/dataSmall.json')
 
 .then(function(response){
   if(response.ok == true){
@@ -28,13 +28,21 @@ function createChart(climateData){
         borderWidth: 1, 
         pointStyle: false,
         borderColor: 'red',
-        backgroundColor: 'red'
+        backgroundColor: 'red',
       }]
     },
     options: {
       scales: {
         y: {
-          beginAtZero: true
+          beginAtZero: true,
+          border: {
+            dash: [2], 
+          }
+        }, 
+        x: {
+          border: {
+            dash: [2]
+          }
         }
       },
       maintainAspectRatio: false
