@@ -31,8 +31,10 @@ svg.ct-chart-bar, svg.ct-chart-line{
   white-space: nowrap;
 }
 
-.ct-series-a .ct-line {
+.ct-series-a .ct-bar, .ct-series-a .ct-line {
     stroke: red;
     stroke-width: 1px;
 }
+
+
 
