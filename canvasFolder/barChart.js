@@ -1,8 +1,5 @@
 const ctx = document.getElementById('myChart');
 
-var started = false; 
-var stopped = false;
-
 // Fetches data from specified file (although might have to change when using XAMPP)
 fetch('../dataFolder/dataSmall.json')
 
@@ -18,7 +15,7 @@ fetch('../dataFolder/dataSmall.json')
 
 // Creates the linechart with passed data 
 function createChart(climateData){
-    started = true;
+    var started = true;
     localStorage.setItem("startValue",started);
     var before = performance.now();
 
@@ -41,7 +38,7 @@ function createChart(climateData){
         y: {
           beginAtZero: true,
           border: {
-            dash: [2], 
+            dash: [2] 
           }
         }, 
         x: {
@@ -55,11 +52,11 @@ function createChart(climateData){
     
   });
 
-  stopped = true;
+  var stopped = true;
   localStorage.setItem("stopValue",stopped);
-  console.log("Stopped!" + stopped);
-  var after = performance.now();
-  console.log("Rendering took " + (after - before) + "ms to execute.");
+  //console.log("Stopped!" + stopped);
+  //var after = performance.now();
+  //console.log("In VS code: Rendering took " + (after - before) + "ms to execute.");
 }
 
 
