@@ -15,8 +15,6 @@ fetch('../dataFolder/dataSmall.json')
 
 // Creates the linechart with passed data 
 function createChart(climateData){
-    var started = true;
-    localStorage.setItem("startValue",started);
     var before = performance.now();
 
   new Chart(ctx, {
@@ -51,13 +49,13 @@ function createChart(climateData){
     }
     
   });
-
-  var stopped = true;
-  localStorage.setItem("stopValue",stopped);
-  //console.log("Stopped!" + stopped);
-  //var after = performance.now();
-  //console.log("In VS code: Rendering took " + (after - before) + "ms to execute.");
+  var after = performance.now();
+  var ms = after - before;
+  localStorage.setItem("ms", ms);
 }
+
+var stopped = true;
+localStorage.setItem("stopValue",stopped);
 
 
 
