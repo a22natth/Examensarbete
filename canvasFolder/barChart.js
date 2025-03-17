@@ -13,7 +13,7 @@ fetch('../dataFolder/dataSmall.json')
   createChart(climateData)
 });
 
-// Creates the linechart with passed data 
+// Creates the linechart with passed data and takes current time 
 function createChart(climateData){
     var before = performance.now();
 
@@ -49,6 +49,8 @@ function createChart(climateData){
     }
     
   });
+  // Takes new time when chart has finished drawing
+  // and calculates the total drawing time
   var after = performance.now();
   var ms = after - before;
   localStorage.setItem("ms", ms);
