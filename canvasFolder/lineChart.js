@@ -13,10 +13,9 @@ fetch('../dataFolder/dataSmall.json')
   createChart(climateData)
 });
 
-// Creates the linechart with passed data
+// Takes starting time of rendering diagram 
+var before = performance.now();
 function createChart(climateData){
-  // Takes starting time of rendering diagram 
-  var before = performance.now();
   new Chart(ctx, {
     type: 'line',
     data: {

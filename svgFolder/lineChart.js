@@ -10,9 +10,10 @@ fetch('../dataFolder/dataSmall.json')
     createChart(climateData)
 });
 
+var before = performance.now();
 function createChart(climateData){
     // Takes starting time of rendering diagram
-    var before = performance.now();
+
     new Chartist.Line('.ct-chart', 
    {
         labels: climateData.weatherdata.avgtemperatures.map(row => row.date),
