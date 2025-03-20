@@ -54,6 +54,7 @@ function createChart(climateData){
   var after = performance.now();
   var ms = after - before;
   localStorage.setItem("ms", ms);
+  console.log(ms);
 }
   // Sets the value to stop so that the measuring script can
   // reload page when the rendering is done
