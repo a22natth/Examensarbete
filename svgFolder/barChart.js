@@ -11,6 +11,7 @@ fetch('../dataFolder/dataSmall.json')
 });
 
 function createChart(climateData){
+      // Takes starting time of rendering diagram
     var before = performance.now();
     new Chartist.Bar('.ct-chart', 
    {
@@ -48,6 +49,8 @@ function createChart(climateData){
   var after = performance.now();
   var ms = after - before;
   localStorage.setItem("ms", ms);
-}    
+}   
+    // Sets the value to stop so that the measuring script can
+    // reload page when the rendering is done 
     var stopped = true;
     localStorage.setItem("stopValue",stopped);

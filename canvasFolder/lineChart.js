@@ -15,6 +15,7 @@ fetch('../dataFolder/dataSmall.json')
 
 // Creates the linechart with passed data
 function createChart(climateData){
+  // Takes starting time of rendering diagram 
   var before = performance.now();
   new Chart(ctx, {
     type: 'line',
@@ -53,6 +54,8 @@ function createChart(climateData){
   var ms = after - before;
   localStorage.setItem("ms", ms);
 }
-var stopped = true;
-localStorage.setItem("stopValue",stopped);
+  // Sets the value to stop so that the measuring script can
+  // reload page when the rendering is done
+  var stopped = true;
+  localStorage.setItem("stopValue",stopped);
 
