@@ -11,6 +11,7 @@ fetch('../dataFolder/dataSmall.json')
 });
 
 function createChart(climateData){
+    var before = performance.now();
     new Chartist.Bar('.ct-chart', 
    {
         labels: climateData.weatherdata.avgtemperatures.map(row => row.date),
@@ -42,4 +43,11 @@ function createChart(climateData){
             }
         },
     });
+  // Takes new time when chart has finished drawing
+  // and calculates the total drawing time
+  var after = performance.now();
+  var ms = after - before;
+  localStorage.setItem("ms", ms);
 }    
+    var stopped = true;
+    localStorage.setItem("stopValue",stopped);

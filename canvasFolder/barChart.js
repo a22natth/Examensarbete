@@ -15,8 +15,7 @@ fetch('../dataFolder/dataSmall.json')
 
 // Creates the linechart with passed data and takes current time 
 function createChart(climateData){
-    var before = performance.now();
-
+  var before = performance.now();
   new Chart(ctx, {
     type: 'bar',
     data: {
@@ -55,9 +54,8 @@ function createChart(climateData){
   var ms = after - before;
   localStorage.setItem("ms", ms);
 }
-
-var stopped = true;
-localStorage.setItem("stopValue",stopped);
+  var stopped = true;
+  localStorage.setItem("stopValue",stopped);
 
 
 

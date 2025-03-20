@@ -15,9 +15,7 @@ fetch('../dataFolder/dataSmall.json')
 
 // Creates the linechart with passed data
 function createChart(climateData){
-  console.log(climateData.weatherdata.avgtemperatures.map(row => row.date));
-  console.log(climateData.weatherdata.avgtemperatures.map(row => row.temp));
-
+  var before = performance.now();
   new Chart(ctx, {
     type: 'line',
     data: {
@@ -49,5 +47,12 @@ function createChart(climateData){
       maintainAspectRatio: false
     }
   });
+  // Takes new time when chart has finished drawing
+  // and calculates the total drawing time
+  var after = performance.now();
+  var ms = after - before;
+  localStorage.setItem("ms", ms);
 }
+var stopped = true;
+localStorage.setItem("stopValue",stopped);
 
