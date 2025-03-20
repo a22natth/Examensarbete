@@ -7,13 +7,17 @@ fetch('../dataFolder/dataSmall.json')
     })
     // If response is ok then a chart is created with the fetched data from the JSON file
 .then(function(climateData){
-    var data = {
+    createChart(climateData)
+});
+
+function createChart(climateData){
+    new Chartist.Bar('.ct-chart', 
+   {
         labels: climateData.weatherdata.avgtemperatures.map(row => row.date),
         series: [climateData.weatherdata.avgtemperatures.map(row => row.temp)],
-      };
-
-    // Customization of line chart
-    var options = {
+    },
+    {
+        //Customize chart
         height: 650,
         width: 1200,
         // Doesn't draw the line chart points
@@ -37,6 +41,5 @@ fetch('../dataFolder/dataSmall.json')
                 }
             }
         },
-    };
-  new Chartist.Bar('.ct-chart', data, options);
-});
+    });
+}    

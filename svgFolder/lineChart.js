@@ -7,13 +7,18 @@ fetch('../dataFolder/dataSmall.json')
     })
     // If response is ok then a chart is created with the fetched data from the JSON file
 .then(function(climateData){
-    var data = {
+    createChart(climateData)
+});
+
+function createChart(climateData){
+    var before = performance.now();
+    new Chartist.Line('.ct-chart', 
+   {
         labels: climateData.weatherdata.avgtemperatures.map(row => row.date),
         series: [climateData.weatherdata.avgtemperatures.map(row => row.temp)],
-      };
-
+    },
     // Customization of line chart
-    var options = {
+    {
         height: 650,
         width: 1200,
         // Doesn't draw the line chart points
@@ -37,6 +42,15 @@ fetch('../dataFolder/dataSmall.json')
                 }
             }
         },
-    };
-  new Chartist.Line('.ct-chart', data, options);
-});
+    });
+    // Takes new time when chart has finished drawing
+    // and calculates the total drawing time
+    var after = performance.now();
+    var ms = after - before;
+    localStorage.setItem("ms", ms);
+}
+    var stopped = true;
+    localStorage.setItem("stopValue",stopped);
+
+
+    
