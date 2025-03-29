@@ -1,19 +1,22 @@
+const parent = document.querySelector("#myChart");
+var before = 0;
 fetch('../dataFolder/dataSmall.json')
 
 .then(function(response){
-    if(response.ok == true){
-        return response.json();
-    }
-    })
-    // If response is ok then a chart is created with the fetched data from the JSON file
+  if(response.ok == true){
+    return response.json();
+  }
+})
+// If response is ok then a chart is created with the fetched data from the JSON file
 .then(function(climateData){
-    createChart(climateData)
+    mutationDetection();
+    createChart(climateData);
 });
 
-var before = performance.now();
+// Creates chart
 function createChart(climateData){
-    // Takes starting time of rendering diagram
-
+    // Takes current time (starting point of chart drawing)
+    before = performance.now();
     new Chartist.Line('.ct-chart', 
    {
         labels: climateData.weatherdata.avgtemperatures.map(row => row.date),
@@ -21,7 +24,7 @@ function createChart(climateData){
     },
     // Customization of line chart
     {
-        height: 650,
+        height: 550,
         width: 1200,
         // Doesn't draw the line chart points
         showPoint: false,
@@ -34,7 +37,7 @@ function createChart(climateData){
         },
         axisX: {
             offset: 0,
-            labelInterpolationFnc: function(value, index) {
+              labelInterpolationFnc: function(value, index) {
                 // For dataSmall.json set nth to 15
                 // For dataMedium.json set nth 29 
                 // For dataLarge.json set nth to 42
@@ -42,20 +45,56 @@ function createChart(climateData){
                 if(index % nth == 0){
                     return value;
                 }
-            }
+            }  
         },
     });
-    // Takes new time when chart has finished drawing
-    // and calculates the total drawing time
-    var after = performance.now();
-    var ms = after - before;
-    localStorage.setItem("ms", ms);
-    console.log(ms + "ms");
+ 
+
 }
-    // Sets the value to stop so that the measuring script can
-    // reload page when the rendering is done
-    var stopped = true;
-    localStorage.setItem("stopValue",stopped);
+
+// Handles mutation detection of chart-element
+function mutationDetection(){
+    let timer;
+  
+    // Each time a modification(mutation) is detected within the element
+    // the callback function is called and timer is reset 
+    // (i.e it will never reach 500ms)
+    const callback = () => {
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        // If timer is reached, i.e. no modifications have been
+        // made for the past 500 ms, the observer stops listening
+        // and takes the time for the stop-point of the chart-drawing
+        observer.disconnect();
+        var after = performance.now();
+        var ms = (after - before) - 500;
+        console.log(ms);
+      }, 500);
+    };
+  
+    // Creates new MutationObserver instance that is linked to the
+    // callback function 
+    const observer = new MutationObserver(callback);
+  
+    // Lists what should be observed in regards to the chart-element
+    // And observes/listens any modifications within these
+    observer.observe(parent, {
+      childList: true,
+      attributes: true,
+      characterData: true,
+      subtree: true,
+      attributeOldValue: true,
+      characterDataOldValue: true
+    });
+  }
+  
+  // Sets the value to stop so that the measuring script can
+  // reload page when the rendering is done
+  var stopped = true;
+  localStorage.setItem("stopValue",stopped);
 
 
-    
+
+
+
+
