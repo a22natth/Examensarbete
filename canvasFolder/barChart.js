@@ -4,7 +4,6 @@ var before = 0;
 
 // Fetches data from specified file (although might have to change when using XAMPP)
 fetch('../dataFolder/dataLarge.json')
-
 .then(function(response){
   if(response.ok == true){
     return response.json();
@@ -12,9 +11,7 @@ fetch('../dataFolder/dataLarge.json')
 })
 // If response is ok then a chart is created with the fetched data from the JSON file
 .then(function(climateData){
-  mutationDetection(parent, () => {
-    console.log("completed");
-  });
+  mutationDetection();
   createChart(climateData);   
 });
 
@@ -36,6 +33,12 @@ function createChart(climateData){
       }]
     },
     options: {
+      // Remove display of main label
+      plugins: {
+        legend: {
+          display: false,
+        },
+      },
         animation: false,
       scales: {
         y: {
@@ -57,27 +60,27 @@ function createChart(climateData){
 
 }
 
-function mutationDetection(parent, callback){
+function mutationDetection(){
   let timer;
-  const now = new Date();
-  console.log("inside mutation" + now.getMilliseconds());
-  // Creates new MutationObserver object 
-  const observer = new MutationObserver(() => {
-    // Each time a modification(mutation) is detected within the element
-    // the timer is reset (i.e it will never reach 500ms)
+  // Each time a modification(mutation) is detected within the element
+  // the callback function is called and timer is reset 
+  // (i.e it will never reach 500ms)
+  const callback = () => {
     clearTimeout(timer);
     timer = setTimeout(() => {
       // If timer is reached, i.e. no modifications have been
       // made for the past 500 ms, the observer stops listening
       // and takes the time for the stop-point of the chart-drawing
       observer.disconnect();
-      console.log("stopping timer and this is before" + before);
       var after = performance.now();
       var ms = (after - before) - 500;
       console.log(ms);
-      callback();  
     }, 500);
-  });
+  };
+
+  // Creates new MutationObserver instance that is linked to the
+  // callback function 
+  const observer = new MutationObserver(callback);
 
   // Lists what should be observed in regards to the chart-element
   // And observes/listens any modifications within these
@@ -89,7 +92,7 @@ function mutationDetection(parent, callback){
     attributeOldValue: true,
     characterDataOldValue: true
   });
-}
+} 
 
 
 
