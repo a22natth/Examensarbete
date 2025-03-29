@@ -3,7 +3,7 @@ const parent = document.querySelector("#myChart");
 var before = 0;
 
 // Fetches data from specified file (although might have to change when using XAMPP)
-fetch('../dataFolder/dataLarge.json')
+fetch('../dataFolder/dataSmall.json')
 .then(function(response){
   if(response.ok == true){
     return response.json();
@@ -60,6 +60,7 @@ function createChart(climateData){
 
 }
 
+// Handles mutation detection of chart-element
 function mutationDetection(){
   let timer;
   // Each time a modification(mutation) is detected within the element
