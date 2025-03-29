@@ -1,5 +1,6 @@
 const parent = document.querySelector("#myChart");
 var before = 0;
+
 fetch('../dataFolder/dataSmall.json')
 
 .then(function(response){
@@ -88,8 +89,8 @@ function mutationDetection(){
     });
   }
   
-  // Sets the value to stop so that the measuring script can
-  // reload page when the rendering is done
+// Sets the value to stop so that the measuring script can
+// reload page when the rendering is done
   var stopped = true;
   localStorage.setItem("stopValue",stopped);
 
