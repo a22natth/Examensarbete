@@ -4,7 +4,7 @@ The data used for the project regarding climate data visualization has been take
 https://www.smhi.se/data/hitta-data-for-en-plats/ladda-ner-vaderobservationer/airtemperatureMean24h, and is under the license 
 Creative Commons 4.0 SE (SMHI, u-å). The dataset used covers the airtemperature mean for each day in the city of Helsingborg, Sweden.
 The dataset is divided into three smaller datasets, covering 730 (dataSmall.json), 1460(dataMedium.json) and 2920(dataLarge.json) datapoints.
-Since the downloaded file is in a csv-format, the following csv-to-json converter has been used: https://www.convertcsv.com/csv-to-json.htm. 
+Since the downloaded file is in a csv-format, the following csv-to-json converter has been used: https://csvjson.com/csv2json.  
 The modifications performen on the csv-file surrounds a namechange of the original headings "Representativt dygn" and "Lufttemperatur".
 These are the only columns used when converting and displaying data in this study. Further modifications have not been made. 
 
