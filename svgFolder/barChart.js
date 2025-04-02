@@ -1,4 +1,4 @@
-const parent = document.querySelector("#myChart");
+const parent = document.getElementById("myChart");
 var before = 0;
 
 fetch('../dataFolder/dataSmall.json')

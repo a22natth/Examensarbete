@@ -1,5 +1,5 @@
 const ctx = document.getElementById('myChart');
-const parent = document.querySelector("#myChart");
+const parent = document.getElementById("myChart");
 var before = 0;
 
 // Fetches data from specified file (although might have to change when using XAMPP)
