@@ -78,6 +78,11 @@ function mutationDetection(){
       var after = performance.now();
       var ms = (after - before) - 500;
       console.log(ms);
+      localStorage.setItem("ms",ms);
+      // Sets the value to stop so that the measuring script can
+      // reload page when the rendering is done
+      var stopped = true;
+      localStorage.setItem("stopValue",stopped);
     }, 500);
   };
 
@@ -97,10 +102,7 @@ function mutationDetection(){
   });
 }
 
-// Sets the value to stop so that the measuring script can
-// reload page when the rendering is done
-  var stopped = true;
-  localStorage.setItem("stopValue",stopped);
+
 
 
 

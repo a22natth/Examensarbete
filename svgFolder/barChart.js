@@ -44,7 +44,7 @@ function createChart(climateData){
                 // For dataSmall.json set nth to 15
                 // For dataMedium.json set nth 29 
                 // For dataLarge.json set nth to 42
-                var nth = 42;
+                var nth = 15;
                 if(index % nth == 0){
                     return value;
                 }
@@ -70,6 +70,11 @@ const callback = () => {
     var after = performance.now();
     var ms = (after - before) - 500;
     console.log(ms);
+    localStorage.setItem("ms",ms);
+    // Sets the value to stop so that the measuring script can
+    // reload page when the rendering is done
+    var stopped = true;
+    localStorage.setItem("stopValue",stopped);
     }, 500);
 };
 
@@ -89,7 +94,3 @@ observer.observe(parent, {
 });
 }
   
-// Sets the value to stop so that the measuring script can
-// reload page when the rendering is done
-  var stopped = true;
-  localStorage.setItem("stopValue",stopped);
