@@ -43,8 +43,8 @@ function createChart(climateData){
             labelInterpolationFnc: function(value, index) {
                 // For dataSmall.json set nth to 15
                 // For dataMedium.json set nth 29 
-                // For dataLarge.json set nth to 42
-                var nth = 15;
+                // For dataLarge.json set nth to 58
+                var nth = 58;
                 if(index % nth == 0){
                     return value;
                 }
