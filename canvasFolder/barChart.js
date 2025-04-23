@@ -3,7 +3,7 @@ const parent = document.getElementById("myChart");
 var before = 0;
 
 // Fetches data from specified file (although might have to change when using XAMPP)
-fetch('../dataFolder/dataSmall.json')
+fetch('../dataFolder/dataLarge.json')
 .then(function(response){
   if(response.ok == true){
     return response.json();
@@ -75,7 +75,6 @@ function mutationDetection(){
       observer.disconnect();
       var after = performance.now();
       var ms = (after - before) - 500;
-      console.log(ms);
       localStorage.setItem("ms",ms);
       // Sets the value to stop so that the measuring script can
       // reload page when the rendering is done

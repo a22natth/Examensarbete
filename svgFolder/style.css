@@ -39,7 +39,7 @@ foreignObject{
 
 .ct-series-a .ct-bar, .ct-series-a .ct-line {
     stroke: red;
-    stroke-width: 1px;
+    stroke-width: 0.5px;
 }
 
 
