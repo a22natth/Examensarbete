@@ -3,7 +3,7 @@ const parent = document.getElementById("myChart");
 var before = 0;
 
 // Fetches data from specified file (although might have to change when using XAMPP)
-fetch('../dataFolder/dataLarge.json')
+fetch('../dataFolder/dataSmall.json')
 .then(function(response){
   if(response.ok == true){
     return response.json();

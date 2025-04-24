@@ -14,7 +14,7 @@ fetch('../dataFolder/dataSmall.json')
     createChart(climateData);
 });
 
-// Creates chart
+// Creates the linechart with passed data and takes current time 
 function createChart(climateData){
     // Takes current time (starting point of chart drawing)
     before = performance.now();
@@ -23,8 +23,8 @@ function createChart(climateData){
         labels: climateData.weatherdata.avgtemperatures.map(row => row.date),
         series: [climateData.weatherdata.avgtemperatures.map(row => row.temp)],
     },
-    // Customization of line chart
     {
+      // Customization of line chart
         height: 550,
         width: 1200,
         // Doesn't draw the line chart points

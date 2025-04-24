@@ -4,7 +4,6 @@ var before = 0;
 
 // Fetches data from specified file (although might have to change when using XAMPP)
 fetch('../dataFolder/dataSmall.json')
-
 .then(function(response){
   if(response.ok == true){
     return response.json();
@@ -16,6 +15,7 @@ fetch('../dataFolder/dataSmall.json')
   createChart(climateData);   
 });
 
+// Creates the linechart with passed data and takes current time 
 function createChart(climateData){
   before = performance.now();
   new Chart(ctx, {
