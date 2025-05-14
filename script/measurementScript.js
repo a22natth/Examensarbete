@@ -4,7 +4,7 @@
 // @version      2025-04-02
 // @description  PLT measurement script
 // @author       a22natth
-// @match        https://localhost/Examensarbete/Untitled/*
+// @match        localhost/Examensarbete/*
 // @grant        none
 // ==/UserScript==
 
@@ -43,7 +43,7 @@ if (stopped && iterations > count){
     // When a second has passed after the rendering has stopped
     // a page-reload function is called
     setTimeout(function(){
-        reloadPage();
+        location.reload();
     }, 1000);
     }
     // When the number of iterations has been reached, the CSV data is fetched
@@ -52,15 +52,6 @@ if (stopped && iterations > count){
     }
 
 }, 600);
-
-// Reloads page so a new measurement can be taken
-function reloadPage(){
-    // For Chart.js line chart change href to: https://localhost/Examensarbete/Untitled/canvasFolder/lineChart.html
-    // For Chart.js line chart change href to: https://localhost/Examensarbete/Untitled/canvasFolder/barChart.html
-    // For Chart.js line chart change href to: https://localhost/Examensarbete/Untitled/svgFolder/lineChart.html
-    // For Chart.js line chart change href to: https://localhost/Examensarbete/Untitled/svgFolder/barChart.html
-    window.location.href = "https://localhost/Examensarbete/Untitled/canvasFolder/lineChart.html";
-}
 
 // Allows the CSV-file to be downloaded
 function getData() {
