@@ -1,6 +1,7 @@
 const parent = document.getElementById("myChart");
 var before = 0;
 
+// Fetches data from specified file 
 fetch('../dataFolder/dataSmall.json')
 
 .then(function(response){

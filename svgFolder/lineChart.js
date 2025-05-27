@@ -1,6 +1,7 @@
 const parent = document.getElementById("myChart");
 var before = 0;
 
+// Fetches data from specified file 
 fetch('../dataFolder/dataSmall.json')
 
 .then(function(response){
@@ -56,7 +57,7 @@ function createChart(climateData){
 // Handles mutation detection of chart-element
 function mutationDetection(){
     let timer;
-  
+
     // Each time a modification(mutation) is detected within the element
     // the callback function is called and timer is reset 
     // (i.e it will never reach 500ms)

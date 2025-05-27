@@ -2,7 +2,7 @@ const ctx = document.getElementById('myChart');
 const parent = document.getElementById("myChart");
 var before = 0;
 
-// Fetches data from specified file (although might have to change when using XAMPP)
+// Fetches data from specified file 
 fetch('../dataFolder/dataSmall.json')
 .then(function(response){
   if(response.ok == true){
